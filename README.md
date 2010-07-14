@@ -1,6 +1,8 @@
 TableMaths
 ==========
 
+Drag this link to your bookmarks bar: <a href="javascript:(function(){t=document.createElement('script');t.setAttribute('src','http://github.com/traction/TableMaths/raw/master/tablemaths.js');document.body.appendChild(t);})()">Table Maths</a>
+
 PROBLEM:
 --------
 HTML emails are, by necessity, chock-full of ugly, deeply nested, brain-scarring table constructions. Getting all the math right on your first try is both difficult, and painful. Tables just plain suck, and it's not like Outlook 2007 is helping anything.
