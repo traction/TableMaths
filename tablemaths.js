@@ -65,7 +65,7 @@ var $tablemaths = {
 			i++;
 		});
 		report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-		$('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(http://github.com/traction/TableMaths/raw/master/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
+		$('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(http://traction.github.com/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
 		$('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
 		$('.tmhl-tag').live('mouseover mouseout', function(event) {
 			if (event.type=='mouseout'){
