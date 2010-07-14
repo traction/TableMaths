@@ -1,7 +1,7 @@
 TableMaths
 ==========
 
-Drag this link to your bookmarks bar: [Table Maths](javascript:\(function\(\)\{t=document.createElement\('script'\);t.setAttribute\('src','http://github.com/traction/TableMaths/raw/master/tablemaths.js'\);document.body.appendChild\(t\);\}\)\(\)")
+Drag this link to your bookmarks bar: [Table Maths](javascript:\(function\(\)\{t=document.createElement\('script'\);t.setAttribute\('src','http://github.com/traction/TableMaths/raw/master/tablemaths.js'\);document.body.appendChild\(t\);\}\)\(\))
 
 PROBLEM:
 --------
