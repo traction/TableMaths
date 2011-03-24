@@ -18,6 +18,10 @@ var $tablemaths = {
 		document.body.appendChild(t);
 	},
 	prerun : function(){
+		if (navigator.userAgent.match(/Firefox\/4/)){
+			alert("Sorry, TableMaths doesn't work with Firefox 4. Yet...");
+			return;
+		}
 		if (typeof $ == 'undefined' || typeof $.fn.draggable == 'undefined'){
 			if (this.tm_loading > this.tm_loading_max) {
 				alert("Waited for 10 seconds and jQuery/jQuery UI are not loaded yet. Giving up... sorry! Waaaa!");
