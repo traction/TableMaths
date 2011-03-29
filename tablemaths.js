@@ -18,10 +18,6 @@ var $tablemaths = {
 		document.body.appendChild(t);
 	},
 	prerun : function(){
-		if (navigator.userAgent.match(/Firefox\/4/)){
-			alert("Sorry, TableMaths doesn't work with Firefox 4. Yet...");
-			return;
-		}
 		if (typeof $ == 'undefined' || typeof $.fn.draggable == 'undefined'){
 			if (this.tm_loading > this.tm_loading_max) {
 				alert("Waited for 10 seconds and jQuery/jQuery UI are not loaded yet. Giving up... sorry! Waaaa!");
@@ -35,6 +31,10 @@ var $tablemaths = {
 		}
 	},
 	run : function(){
+		if ($.browser.opera || $.browser.msie){
+			alert("Sorry, TableMaths doesn't work with your browser. Please try Firefox, Safari, or Chrome.");
+			return;
+		}
 		$('body').append('<div id="tmhl" style="display:none;background-color:#9cf;opacity:0.75;position:absolute;z-index:999;"></div>');
 		this.tm_cache = [];
 		i=0;
