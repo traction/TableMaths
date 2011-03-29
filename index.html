@@ -29,6 +29,22 @@
 		pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+		a.bookmarklet {
+			background-color: #626262;
+			border: 1px solid #626262;
+			border-radius: 8px;
+			color: white;
+			display: inline-block;
+			font-family: 'Lucida Grande', Verdana, sans-serif;
+			font-size: 11px;
+			font-weight: bold;
+			min-width: 62px;
+			padding: 0px 7px 1px;
+			text-align: center;
+			text-shadow: #3B3B3B 1px 1px 0px;
+			vertical-align: 2px;
+			text-decoration:none;
+		}
 	</style>
 	
 </head>
@@ -38,7 +54,7 @@
 
   <div id="container">
 
-    <h1><a href="http://github.com/traction/TableMaths">TableMaths</a>
+    <h1>TableMaths
       <span class="small">by <a href="http://github.com/traction">traction</a></span></h1>
 
     <div class="description">
@@ -46,7 +62,7 @@
     </div>
 
 	<h2>Installation</h2>
-	<p>Drag this link to your bookmarks bar: <a href="javascript:(function(){t=document.createElement('script');t.setAttribute('src','http://traction.github.com/TableMaths/tablemaths.js');document.body.appendChild(t);})()">Table Maths</a></p>
+	<p>Drag this link to your bookmarks bar: <a class="bookmarklet" href="javascript:(function(){t=document.createElement('script');t.setAttribute('src','http://traction.github.com/TableMaths/tablemaths.js');document.body.appendChild(t);})()" title="Table Maths" onclick="alert('Don\'t click me, just drag me to your bookmarks bar!');return false;">Table Maths</a></p>
 
 	<h2>The problem</h2>
 	<p>HTML emails are, by necessity, chock-full of ugly, deeply nested, brain-scarring table constructions. Getting all the math right on your first try is both difficult, and painful. Tables just plain suck, and it's not like Outlook 2007 is helping anything.</p>
@@ -61,7 +77,7 @@
 	<p>Currently tested in Firefox, Safari, and Chrome.</p>
 
 	<h2>Authors</h2>
-	<p>Gabriel Gilder (ggilder@tractionco.com)</p>
+	<p><a href="http://github.com/ggilder">Gabriel Gilder</a></p>
 
     <div class="footer">
       get the source code on GitHub : <a href="http://github.com/traction/TableMaths">traction/TableMaths</a>
