@@ -1,12 +1,13 @@
 /*
 Table Maths!
-© 2010 Traction
-By Gabriel Gilder, 2010/06/17
+© 2011 Traction
+By Gabriel Gilder, 2011/11/10
 */
 var $tablemaths = {
   tm_loading : 0,
   tm_loading_max : 200,
   tm_cache : [],
+  tm_tag_index: 0,
   init : function(){
     this.addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js');
     this.addScript('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js');
@@ -49,22 +50,28 @@ var $tablemaths = {
         if (x.substring(x.length-1)=='%'){
           if (parseInt(e.css('padding-left')) || parseInt(e.css('padding-right'))) {
             report += 'Error! Tag with percentage width and padding:<br/>';
-            report += $tablemaths.tagHtml(e, idx)+'<br/><br/>';
-            $tablemaths.tm_cache[idx]=e;
+            report += $tablemaths.tagHtml(e)+'<br/><br/>';
             err++;
           } else if (e.parents('table').length > 0) { // ignores tables that aren't nested
             report += 'Warning! Percentage width on tag:<br/>';
-            report += $tablemaths.tagHtml(e, idx)+'<br/><br/>';
-            $tablemaths.tm_cache[idx]=e;
+            report += $tablemaths.tagHtml(e)+'<br/><br/>';
             warn++;
           }
         } else if (w!=x) {
           report += 'Incorrect width on tag:<br/>';
-          report += $tablemaths.tagHtml(e, idx)+'<br/>';
+          report += $tablemaths.tagHtml(e)+'<br/>';
           report += x+' specified, '+w+' actual<br/><br/>';
-          $tablemaths.tm_cache[idx]=e;
           err++;
         }
+      }
+      i++;
+    });
+    $('tr').each(function(idx,el){
+      var e=$(el);
+      if(e.attr('valign')){
+        report += 'Warning! valign on tr tags is ignored in some email clients.<br/>'
+        report += $tablemaths.tagHtml(e)+'<br/>';
+        warn++;
       }
       i++;
     });
@@ -79,12 +86,14 @@ var $tablemaths = {
       }
     });
   },
-  tagHtml : function(e, idx){
+  tagHtml : function(e){
+    this.tm_tag_index++;
+    this.tm_cache[this.tm_tag_index]=e;
     out = $("<p>").append(e.eq(0).clone()).html();
     parts = out.split('>',2);
     out = parts[0]+'>';
     out = out.replace('<','&lt;').replace('>','&gt;');
-    out = '<span class="tmhl-tag" style="cursor:help;" cacheidx="'+idx+'">'+out+'</span>';
+    out = '<span class="tmhl-tag" style="cursor:help;" cacheidx="'+this.tm_tag_index+'">'+out+'</span>';
     return out;
   },
   highlightEl : function(e){
