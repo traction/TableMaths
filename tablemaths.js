@@ -1,7 +1,7 @@
 /*
 Table Maths!
 © 2011 Traction
-By Gabriel Gilder, 2011/11/10
+https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
   version: '1.0',
@@ -12,8 +12,8 @@ var $tablemaths = {
   tm_tag_index: 0,
   init : function(){
     this.tm_loading_start = new Date().getTime();
-    this.addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js');
-    this.addScript('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+    this.addScript('https://code.jquery.com/jquery-1.8.3.min.js');
+    this.addScript('https://code.jquery.com/ui/1.12.1/jquery-ui.min.js');
     window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
   },
   addScript : function(src){
@@ -86,7 +86,7 @@ var $tablemaths = {
       i++;
     });
     report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(http://traction.github.com/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
+    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(https://traction.github.io/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
     $('.tmhl-tag').live('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
