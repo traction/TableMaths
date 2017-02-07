@@ -4,7 +4,7 @@ Table Maths!
 https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
-  version: '1.0',
+  version: '1.1.0',
   tm_loading_start: 0,
   tm_loading_interval: 100,
   tm_loading_max: 10,
