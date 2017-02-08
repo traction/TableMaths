@@ -1,17 +1,20 @@
 /*
 Table Maths!
 © 2011 Traction
-By Gabriel Gilder, 2011/11/10
+https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
-  tm_loading : 0,
-  tm_loading_max : 200,
-  tm_cache : [],
+  version: '1.1.0',
+  tm_loading_start: 0,
+  tm_loading_interval: 100,
+  tm_loading_max: 10,
+  tm_cache: [],
   tm_tag_index: 0,
   init : function(){
-    this.addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js');
-    this.addScript('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js');
-    window.setTimeout('$tablemaths.prerun()',50);
+    this.tm_loading_start = new Date().getTime();
+    this.addScript('https://code.jquery.com/jquery-1.8.3.min.js');
+    this.addScript('https://code.jquery.com/ui/1.12.1/jquery-ui.min.js');
+    window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
   },
   addScript : function(src){
     t=document.createElement('script');
@@ -20,12 +23,11 @@ var $tablemaths = {
   },
   prerun : function(){
     if (typeof $ == 'undefined' || typeof $.fn.draggable == 'undefined'){
-      if (this.tm_loading > this.tm_loading_max) {
-        alert("Waited for 10 seconds and jQuery/jQuery UI are not loaded yet. Giving up... sorry! Waaaa!");
+      if ((new Date().getTime() - this.tm_loading_start) > (this.tm_loading_max * 1000)) {
+        alert("Waited for "+this.tm_loading_max+" seconds and jQuery/jQuery UI are not loaded yet. Giving up... sorry! Waaaa!");
       } else {
-        console.log('jquery or jquery ui not loaded; waiting another 50ms...');
-        this.tm_loading++;
-        window.setTimeout('$tablemaths.prerun()',50);
+        console.log('jquery or jquery ui not loaded; waiting another '+this.tm_loading_interval+'ms...');
+        window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
       }
     }else{
       this.run();
@@ -42,12 +44,18 @@ var $tablemaths = {
     err=0;
     warn=0;
     report=''
-    reporttag='<div id="tablemaths" style="z-index:9999;position:fixed;top:15px;left:15px;border:1px solid #000;background-color:#ff9;font-family:Lucida Grande;font-size:10px;padding:5px;width:450px;overflow:hidden;cursor:move;">';
+    reporttag='<div id="tablemaths" style="z-index:9999;position:fixed;top:15px;left:15px;border:1px solid #000;background-color:#ff9;font-family:Lucida Grande,Helvetica,Arial;font-size:10px;padding:5px;width:450px;overflow:hidden;cursor:move;">';
+    reporttag += '<h1 style="font-size:16px;font-weight:bold;margin:0 0 12px 0;">TableMaths '+this.version+'</h1>';
     $('table,td').each(function(idx,el){
-      e=$(el);
-      if(x=e.attr('width')){
-        w=e.width();
-        if (x.substring(x.length-1)=='%'){
+      var e=$(el);
+      var x=e.attr('width');
+      if(x !== undefined){
+        var w=e.width();
+        if (x.trim() === '') {
+          report += 'Warning! Empty width attribute on tag:<br/>';
+          report += $tablemaths.tagHtml(e)+'<br/><br/>';
+          warn++;
+        } else if (x.substring(x.length-1)=='%'){
           if (parseInt(e.css('padding-left')) || parseInt(e.css('padding-right'))) {
             report += 'Error! Tag with percentage width and padding:<br/>';
             report += $tablemaths.tagHtml(e)+'<br/><br/>';
@@ -73,10 +81,12 @@ var $tablemaths = {
         report += $tablemaths.tagHtml(e)+'<br/>';
         warn++;
       }
+      var tds = e.find('> td');
+      var pad_top = tds.map(function(){return parseInt($(this).css('padding-top'), 10);});
       i++;
     });
     report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(http://traction.github.com/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
+    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(https://traction.github.io/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
     $('.tmhl-tag').live('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
