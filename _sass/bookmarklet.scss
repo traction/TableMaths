@@ -1,0 +1,23 @@
+// bookmarklet
+
+// Colors
+$bookmarklet-background: #626262;
+$bookmarklet-shadow: #3b3b3b;
+$bookmarklet-color: $swatch-white;
+
+// Style
+.bookmarklet {
+  display: inline-block;
+  border: 1px solid $bookmarklet-background;
+  border-radius: 8px;
+  background-color: $bookmarklet-background;
+  padding: 4px 7px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: $bookmarklet-shadow 1px 1px 0;
+  line-height: 1;
+  color: $bookmarklet-color;
+  font-family: 'Lucida Grande', Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}

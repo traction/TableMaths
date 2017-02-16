@@ -13,8 +13,8 @@ body {
   margin: 0 auto;
   width: 700px;
 
-  @media (max-width: 800px) {
-    margin: 0 auto;
+  @media ($meida-small-max) {
+    margin: 0 5px;
     width: 95%;
   }
 }
@@ -54,8 +54,7 @@ a {
 }
 
 .description {
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin: 30px 0;
   font-size: 1.2em;
   font-style: italic;
 }
@@ -80,21 +79,4 @@ hr {
   padding: 30px 0 0;
   text-align: center;
   font-style: italic;
-}
-
-.bookmarklet {
-  display: inline-block;
-  border: 1px solid $bookmarklet-background;
-  border-radius: 8px;
-  background-color: $bookmarklet-background;
-  padding: 0 7px 1px;
-  min-width: 62px;
-  vertical-align: 2px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: $bookmarklet-shadow 1px 1px 0;
-  color: $bookmarklet-color;
-  font-family: 'Lucida Grande', Verdana, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
 }
