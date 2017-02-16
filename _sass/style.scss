@@ -4,7 +4,7 @@ body {
   color: $color-text;
   font-family: Helvetica, Arial, FreeSans, sans;
 
-  @media (max-width: 800px) {
+  @media ($meida-small-max) {
     margin: $traction-sidenav-width + 20px 0 0;
   }
 }
