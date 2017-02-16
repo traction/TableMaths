@@ -1,1 +1,8 @@
+# System Files
 .DS_Store
+
+# Jekyll & GitHub Pages Ignores
+_site/
+Gemfile.lock
+.sass-cache/
+.jekyll-metadata

@@ -1,0 +1,55 @@
+// Traction Sidenav
+
+// Sizes (used in conjunction with project style)
+$traction-sidenav-width: 44px;
+
+// Colors
+$traction-sidenav-bg-00: #424242;
+$traction-sidenav-bg-01: #2d2d2c;
+$traction-sidenav-bg-02: #2d2d2c;
+$traction-sidenav-border: #636362;
+
+.traction-sidenav {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient($traction-sidenav-bg-00 0%, $traction-sidenav-bg-01 28%, $traction-sidenav-bg-02 100%);
+  width: $traction-sidenav-width;
+  height: 100%;
+  text-align: center;
+
+  .logo-container {
+    background-color: $traction-sidenav-bg-01;
+    padding: 24px 0 12px 2px;
+    @media ($meida-small-max) {
+      padding: 7px 0 0 10px;
+    }
+  }
+
+  .logo-container-cutline {
+    position: relative;
+    top: -8px;
+    transform: skewY(-22deg);
+    border-bottom: 2px solid $traction-sidenav-border;
+    background-color: $traction-sidenav-bg-01;
+    height: 24px;
+
+    @media ($meida-small-max) {
+      top: (-$traction-sidenav-width + 3);
+      left: 66px;
+      transform: skewX(-22deg);
+      border-right: 2px solid $traction-sidenav-border;
+      border-bottom: 0;
+      width: 2px;
+      height: $traction-sidenav-width;
+    }
+  }
+
+  @media ($meida-small-max) {
+    width: 100%;
+    height: $traction-sidenav-width;
+    text-align: left;
+  }
+
+}

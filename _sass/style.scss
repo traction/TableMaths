@@ -1,0 +1,82 @@
+body {
+  margin: 1em 0 0;
+  background-color: $color-background;
+  color: $color-text;
+  font-family: Helvetica, Arial, FreeSans, sans;
+
+  @media ($meida-small-max) {
+    margin: $traction-sidenav-width + 20px 0 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 700px;
+
+  @media ($meida-small-max) {
+    margin: 0 5px;
+    width: 95%;
+  }
+}
+
+h1 {
+  margin: 0 0 3px;
+  line-height: 1;
+  color: $color-headings;
+  font-size: 3.8em;
+
+  small {
+    font-size: .4em;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h2 {
+  line-height: 1;
+  color: $color-headings;
+  font-size: 1.5em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  line-height: 1;
+  color: $color-headings;
+}
+
+a {
+  color: $color-headings;
+}
+
+.description {
+  margin: 30px 0;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.download {
+  float: right;
+}
+
+pre {
+  background: $swatch-black;
+  padding: 15px;
+  color: $swatch-white;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid $color-hr;
+  width: 80%;
+}
+
+.footer {
+  padding: 30px 0 0;
+  text-align: center;
+  font-style: italic;
+}

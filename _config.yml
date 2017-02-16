@@ -1,0 +1,2 @@
+repository: traction/TableMaths
+exclude: ['Readme.md','Gemfile*']
