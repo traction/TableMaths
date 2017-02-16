@@ -1,79 +1,85 @@
 body {
-  margin-top: 1.0em;
-  background-color: #e6e4ec;
-  font-family: "Helvetica, Arial, FreeSans";
-  color: #000000;
+  background-color: $color-background;
+  color: $color-text;
+  font-family: Helvetica, Arial, FreeSans, sans;
+  margin-top: 1em;
 }
 
-#container {
+.container {
   margin: 0 auto;
   width: 700px;
 }
 
 h1 {
+  color: $color-headings;
   font-size: 3.8em;
-  color: #191b13;
   margin-bottom: 3px;
-  
-  .small {
-    font-size: 0.4em;
+
+  small {
+    font-size: .4em;
   }
-  
+
   a {
     text-decoration: none;
   }
 }
+
 h2 {
+  color: $color-headings;
   font-size: 1.5em;
-  color: #191b13;
 }
+
 h3 {
+  color: $color-headings;
   text-align: center;
-  color: #191b13;
 }
 
 a {
-  color: #191b13;
+  color: $color-headings;
 }
 
 .description {
   font-size: 1.2em;
+  font-style: italic;
   margin-bottom: 30px;
   margin-top: 30px;
-  font-style: italic;
 }
 
-.download { float: right; }
+.download {
+  float: right;
+}
 
 pre {
-  background: #000;
-  color: #fff; padding: 15px;}
+  background: $swatch-black;
+  color: $swatch-white;
+  padding: 15px;
+}
 
 hr {
   border: 0;
+  border-bottom: 1px solid $color-hr;
   width: 80%;
-  border-bottom: 1px solid #aaa;
 }
 
 .footer {
-  text-align:center;
-  padding-top:30px;
   font-style: italic;
+  padding: 30px 0 0;
+  text-align: center;
 }
 
-a.bookmarklet {
-  background-color: #626262;
-  border: 1px solid #626262;
+.bookmarklet {
+  background-color: $bookmarklet-background;
+  border: 1px solid $bookmarklet-background;
   border-radius: 8px;
-  color: white;
+  color: $bookmarklet-color;
   display: inline-block;
   font-family: 'Lucida Grande', Verdana, sans-serif;
-  font-size: 11px;
+  font-size: 20px;
   font-weight: bold;
   min-width: 62px;
-  padding: 0px 7px 1px;
+  padding: 0 7px 1px;
   text-align: center;
-  text-shadow: #3B3B3B 1px 1px 0px;
+  text-decoration: none;
+  text-shadow: $bookmarklet-shadow 1px 1px 0;
   vertical-align: 2px;
-  text-decoration:none;
 }
