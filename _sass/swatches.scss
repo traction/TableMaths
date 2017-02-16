@@ -1,0 +1,12 @@
+// Swatches
+$swatch-black: #000;
+$swatch-white: #fff;
+
+// Assignments
+$color-background: #424242;
+$color-text: darken($swatch-white, 20%);
+$color-headings: $swatch-white;
+$color-hr: #aaa;
+
+// Media viewports
+$meida-small-max: 'max-width: 800px';
