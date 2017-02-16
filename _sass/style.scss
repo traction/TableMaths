@@ -1,19 +1,29 @@
 body {
-  margin-top: 1em;
+  margin: 1em 0 0;
   background-color: $color-background;
   color: $color-text;
   font-family: Helvetica, Arial, FreeSans, sans;
+
+  @media (max-width: 800px) {
+    margin: $traction-sidenav-width + 20px 0 0;
+  }
 }
 
 .container {
   margin: 0 auto;
   width: 700px;
+
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    width: 95%;
+  }
 }
 
 h1 {
-  font-size: 3.8em;
-  margin-bottom: 3px;
+  margin: 0 0 3px;
+  line-height: 1;
   color: $color-headings;
+  font-size: 3.8em;
 
   small {
     font-size: .4em;
@@ -25,12 +35,17 @@ h1 {
 }
 
 h2 {
+  line-height: 1;
   color: $color-headings;
   font-size: 1.5em;
 }
 
-h3 {
+h3,
+h4,
+h5,
+h6 {
   text-align: center;
+  line-height: 1;
   color: $color-headings;
 }
 
