@@ -5,7 +5,7 @@ https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
   version: '1.1.0',
-  src_jquery: 'https://code.jquery.com/jquery-1.8.3.min.js',
+  src_jquery: 'https://code.jquery.com/jquery-1.12.4.min.js',
   src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
   tm_loading_start: 0,
   tm_loading_interval: 400,
@@ -96,7 +96,7 @@ var $tablemaths = {
     report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
     $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(https://traction.github.io/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
-    $('.tmhl-tag').live('mouseover mouseout', function(event) {
+    $('.tmhl-tag').on('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
         $('#tmhl').hide();
       } else {
