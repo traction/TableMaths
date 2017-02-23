@@ -3,32 +3,55 @@
 
 // Used directly in TableMaths display.
 
+// Colors
+$main-background: #ff9;
+$main-color: #000;
+$highlight-background: #9cf;
+
 #tmhl {
   display: none;
   position: absolute;
   opacity: .75;
-  z-index: 999;
-  background-color: #9cf;
+  z-index: 9999;
+  background-color: $highlight-background;
 }
 
 #tablemaths {
   position: fixed;
   top: 15px;
   left: 15px;
-  z-index: 9999;
-  border: 1px solid #000;
-  background-color: #ff9;
+  z-index: 99999;
+  border: 1px solid $main-color;
+  background-color: $main-background;
+  color: $main-color;
   cursor: move;
   padding: 5px;
   width: 450px;
   overflow: hidden;
   font-family: 'Lucida Grande', Helvetica, Arial;
-  font-size: 10px;
+  font-size: 12px;
   
   h1 {
+    color: $main-color;
     margin: 0 0 12px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
+    
+    small {
+      font-size: 12px;
+    }
+  }
+  
+  .tm-report {
+    font-weight: bold;
+  }
+  
+  .tm-report-element {
+    margin-bottom: 10px;
+    
+    .tm-report-heading {
+      font-weight: bold;
+    }
   }
 
   #tmrs {

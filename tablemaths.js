@@ -58,30 +58,37 @@ var $tablemaths = {
     var warn=0;
     var report=''
     var reporttag='<div id="tablemaths">';
-    reporttag += '<h1>TableMaths '+this.version+'</h1>';
+    reporttag += '<h1>TableMaths '+this.version+' <small><a href="https://traction.github.io/TableMaths/" target="_blank">by Traction</a></small></h1>';
     $('table,td').each(function(idx,el){
       var e=$(el);
       var x=e.attr('width');
       if(x !== undefined){
         var w=e.width();
         if (x.trim() === '') {
-          report += 'Warning! Empty width attribute on tag:<br/>';
-          report += $tablemaths.tagHtml(e)+'<br/><br/>';
+          report += '<div class="tm-report-element tm-report-type-emptywidth">';
+          report += '<span class="tm-report-heading">Warning! Empty width attribute on tag:</span><br/>';
+          report += $tablemaths.tagHtml(e);
+          report += '</div>';
           warn++;
         } else if (x.substring(x.length-1)=='%'){
           if (parseInt(e.css('padding-left')) || parseInt(e.css('padding-right'))) {
-            report += 'Error! Tag with percentage width and padding:<br/>';
-            report += $tablemaths.tagHtml(e)+'<br/><br/>';
+            report += '<div class="tm-report-element tm-report-type-percentagewidthpadding">';
+            report += '<span class="tm-report-heading">Error! Tag with percentage width and padding:</span><br/>';
+            report += $tablemaths.tagHtml(e);
             err++;
           } else if (e.parents('table').length > 0) { // ignores tables that aren't nested
-            report += 'Warning! Percentage width on tag:<br/>';
-            report += $tablemaths.tagHtml(e)+'<br/><br/>';
+            report += '<div class="tm-report-element tm-report-type-percentagewidth">';
+            report += '<span class="tm-report-heading">Warning! Percentage width on tag:</span><br/>';
+            report += $tablemaths.tagHtml(e);
+            report += '</div>';
             warn++;
           }
         } else if (w!=x) {
-          report += 'Incorrect width on tag:<br/>';
+          report += '<div class="tm-report-element tm-report-type-widthwrong">';
+          report += '<span class="tm-report-heading">Incorrect width on tag:</span><br/>';
           report += $tablemaths.tagHtml(e)+'<br/>';
-          report += x+' specified, '+w+' actual<br/><br/>';
+          report += x+' specified, '+w+' actual';
+          report += '</div>';
           err++;
         }
       }
@@ -90,16 +97,18 @@ var $tablemaths = {
     $('tr').each(function(idx,el){
       var e=$(el);
       if(e.attr('valign')){
-        report += 'Warning! valign on tr tags is ignored in some email clients.<br/>'
-        report += $tablemaths.tagHtml(e)+'<br/>';
+        report += '<div class="tm-report-element tm-report-type-valign">';
+        report += '<span class="tm-report-heading">Warning! valign on tr tags is ignored in some email clients.</span><br/>'
+        report += $tablemaths.tagHtml(e);
+        report += '</div>';
         warn++;
       }
       var tds = e.find('> td');
       var pad_top = tds.map(function(){return parseInt($(this).css('padding-top'), 10);});
       i++;
     });
-    report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se"></div></div>');
+    var finalReport = '<p class="tm-report">' + i + ' tags scanned, ' + err + ' errors, ' + warn + ' warnings.</p>' + report + '<p class="tm-ending">Enjoy your maths!</p>';
+    $('body').append(reporttag + finalReport + '<div id="tmrs" class="ui-resizable-handle ui-resizable-se"></div></div>');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
     $('.tmhl-tag').on('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
