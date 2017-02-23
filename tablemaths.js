@@ -7,11 +7,19 @@ var $tablemaths = {
   version: '1.1.0',
   src_jquery: 'https://code.jquery.com/jquery-3.1.1.min.js',
   src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
-  src_img_handle: 'https://traction.github.io/TableMaths/handle.png',
+  src_style: 'https://traction.github.io/TableMaths/assets/css/tablemaths.css',
   tm_cache: [],
   tm_tag_index: 0,
   init : function(){
+    $tablemaths.loadStyle();
     $tablemaths.loadJquery();
+  },
+  loadStyle: function() {
+    var styleTag = document.createElement('link');
+    styleTag.setAttribute('href', $tablemaths.src_style);
+    styleTag.setAttribute('rel', 'stylesheet');
+    styleTag.setAttribute('type', 'text/css');
+    document.head.appendChild(styleTag);
   },
   loadJquery: function() {
     var jqueryScript = document.createElement('script');
@@ -43,14 +51,14 @@ var $tablemaths = {
     }
   },
   run : function(){
-    $('body').append('<div id="tmhl" style="display:none;background-color:#9cf;opacity:0.75;position:absolute;z-index:999;"></div>');
+    $('body').append('<div id="tmhl"></div>');
     this.tm_cache = [];
     var i=0;
     var err=0;
     var warn=0;
     var report=''
-    var reporttag='<div id="tablemaths" style="z-index:9999;position:fixed;top:15px;left:15px;border:1px solid #000;background-color:#ff9;font-family:Lucida Grande,Helvetica,Arial;font-size:10px;padding:5px;width:450px;overflow:hidden;cursor:move;">';
-    reporttag += '<h1 style="font-size:16px;font-weight:bold;margin:0 0 12px 0;">TableMaths '+this.version+'</h1>';
+    var reporttag='<div id="tablemaths">';
+    reporttag += '<h1>TableMaths '+this.version+'</h1>';
     $('table,td').each(function(idx,el){
       var e=$(el);
       var x=e.attr('width');
@@ -91,7 +99,7 @@ var $tablemaths = {
       i++;
     });
     report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url('+$tablemaths.src_img_handle+');background-size:11px;background-repeat:no-repeat;width:11px;height:11px;cursor:se-resize;"></div></div');
+    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se"></div></div>');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
     $('.tmhl-tag').on('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
@@ -108,7 +116,7 @@ var $tablemaths = {
     var parts = out.split('>',2);
     out = parts[0]+'>';
     out = out.replace('<','&lt;').replace('>','&gt;');
-    out = '<span class="tmhl-tag" style="cursor:help;" cacheidx="'+this.tm_tag_index+'">'+out+'</span>';
+    out = '<span class="tmhl-tag" cacheidx="'+this.tm_tag_index+'">'+out+'</span>';
     return out;
   },
   highlightEl : function(e){
