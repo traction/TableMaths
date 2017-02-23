@@ -5,7 +5,7 @@ https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
   version: '1.1.0',
-  src_jquery: 'https://code.jquery.com/jquery-1.12.4.min.js',
+  src_jquery: 'https://code.jquery.com/jquery-3.1.1.min.js',
   src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
   tm_loading_start: 0,
   tm_loading_interval: 400,
