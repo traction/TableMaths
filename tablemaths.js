@@ -7,6 +7,7 @@ var $tablemaths = {
   version: '1.1.0',
   src_jquery: 'https://code.jquery.com/jquery-3.1.1.min.js',
   src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+  src_img_handle: 'https://traction.github.io/TableMaths/handle.png',
   tm_loading_start: 0,
   tm_loading_interval: 400,
   tm_loading_max: 10,
@@ -94,7 +95,7 @@ var $tablemaths = {
       i++;
     });
     report = '<b>'+i+' tags scanned, '+err+' errors, '+warn+' warnings.</b><br/><br/>'+report+'Enjoy your maths!';
-    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url(https://traction.github.io/TableMaths/handle.png);width:11px;height:11px;cursor:se-resize;"></div></div');
+    $('body').append(reporttag+report+'<div id="tmrs" class="ui-resizable-handle ui-resizable-se" style="position:absolute;bottom:5px;right:5px;background-image:url('+$tablemaths.src_img_handle+');background-size:11px;background-repeat:no-repeat;width:11px;height:11px;cursor:se-resize;"></div></div');
     $('#tablemaths').draggable().resizable({ handles: {se:'#tmrs'} });
     $('.tmhl-tag').on('mouseover mouseout', function(event) {
       if (event.type=='mouseout'){
