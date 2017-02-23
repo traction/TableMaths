@@ -46,10 +46,6 @@ var $tablemaths = {
     }
   },
   run : function(){
-    if ($.browser.opera || $.browser.msie){
-      alert("Sorry, TableMaths doesn't work with your browser. Please try Firefox, Safari, or Chrome.");
-      return;
-    }
     $('body').append('<div id="tmhl" style="display:none;background-color:#9cf;opacity:0.75;position:absolute;z-index:999;"></div>');
     this.tm_cache = [];
     var i=0;
