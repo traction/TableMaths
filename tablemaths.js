@@ -5,6 +5,8 @@ https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
   version: '1.1.0',
+  src_jquery: 'https://code.jquery.com/jquery-1.8.3.min.js',
+  src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
   tm_loading_start: 0,
   tm_loading_interval: 400,
   tm_loading_max: 10,
@@ -12,24 +14,34 @@ var $tablemaths = {
   tm_tag_index: 0,
   init : function(){
     this.tm_loading_start = new Date().getTime();
-    this.addScript('https://code.jquery.com/jquery-1.8.3.min.js');
-    this.addScript('https://code.jquery.com/ui/1.12.1/jquery-ui.min.js');
-    window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
+    $tablemaths.loadJquery();
   },
-  addScript : function(src){
-    var t = document.createElement('script');
-    t.setAttribute('src', src);
-    document.body.appendChild(t);
+  loadJquery: function() {
+    var jqueryScript = document.createElement('script');
+    jqueryScript.setAttribute('src', $tablemaths.src_jquery);
+    jqueryScript.onload = function() {
+      $tablemaths.loadJqueryUI();
+    };
+    jqueryScript.onerror = function() {
+      $tablemaths.error('jQuery could not load.');
+    };
+    document.head.appendChild(jqueryScript);
+  },
+  loadJqueryUI: function() {
+    var jqueryScriptUI = document.createElement('script');
+    jqueryScriptUI.setAttribute('src', $tablemaths.src_jquery_ui);
+    jqueryScriptUI.onload = function() {
+      $tablemaths.prerun();
+    };
+    jqueryScriptUI.onerror = function() {
+      $tablemaths.error('jQuery UI could not load.');
+    };
+    document.head.appendChild(jqueryScriptUI);
   },
   prerun : function(){
     if (typeof $ == 'undefined' || typeof $.fn.draggable == 'undefined'){
-      if ((new Date().getTime() - this.tm_loading_start) > (this.tm_loading_max * 1000)) {
-        alert("Waited for "+this.tm_loading_max+" seconds and jQuery/jQuery UI are not loaded yet. Giving up... sorry! Waaaa!");
-      } else {
-        console.log('jquery or jquery ui not loaded; waiting another '+this.tm_loading_interval+'ms...');
-        window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
-      }
-    }else{
+      $tablemaths.error('jQuery or jQuery UI couldn\'t load.');
+    } else {
       this.run();
     }
   },
@@ -109,6 +121,10 @@ var $tablemaths = {
   highlightEl : function(e){
     var p=e.offset();
     $('#tmhl').css('left',p.left).css('top',p.top).width(e.width()).height(e.height()).show();
+  },
+  error: function(inputString) {
+    console.error(inputString);
+    return false;
   }
 };
 $tablemaths.init();
