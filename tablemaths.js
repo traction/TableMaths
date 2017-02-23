@@ -8,13 +8,9 @@ var $tablemaths = {
   src_jquery: 'https://code.jquery.com/jquery-3.1.1.min.js',
   src_jquery_ui: 'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
   src_img_handle: 'https://traction.github.io/TableMaths/handle.png',
-  tm_loading_start: 0,
-  tm_loading_interval: 400,
-  tm_loading_max: 10,
   tm_cache: [],
   tm_tag_index: 0,
   init : function(){
-    this.tm_loading_start = new Date().getTime();
     $tablemaths.loadJquery();
   },
   loadJquery: function() {
