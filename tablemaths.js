@@ -1,12 +1,12 @@
 /*
 Table Maths!
-© 2011 Traction
+© 2017 Traction
 https://traction.github.io/TableMaths/
 */
 var $tablemaths = {
   version: '1.1.0',
   tm_loading_start: 0,
-  tm_loading_interval: 100,
+  tm_loading_interval: 400,
   tm_loading_max: 10,
   tm_cache: [],
   tm_tag_index: 0,
@@ -17,8 +17,8 @@ var $tablemaths = {
     window.setTimeout("$tablemaths.prerun()", this.tm_loading_interval);
   },
   addScript : function(src){
-    t=document.createElement('script');
-    t.setAttribute('src',src);
+    var t = document.createElement('script');
+    t.setAttribute('src', src);
     document.body.appendChild(t);
   },
   prerun : function(){
@@ -40,11 +40,11 @@ var $tablemaths = {
     }
     $('body').append('<div id="tmhl" style="display:none;background-color:#9cf;opacity:0.75;position:absolute;z-index:999;"></div>');
     this.tm_cache = [];
-    i=0;
-    err=0;
-    warn=0;
-    report=''
-    reporttag='<div id="tablemaths" style="z-index:9999;position:fixed;top:15px;left:15px;border:1px solid #000;background-color:#ff9;font-family:Lucida Grande,Helvetica,Arial;font-size:10px;padding:5px;width:450px;overflow:hidden;cursor:move;">';
+    var i=0;
+    var err=0;
+    var warn=0;
+    var report=''
+    var reporttag='<div id="tablemaths" style="z-index:9999;position:fixed;top:15px;left:15px;border:1px solid #000;background-color:#ff9;font-family:Lucida Grande,Helvetica,Arial;font-size:10px;padding:5px;width:450px;overflow:hidden;cursor:move;">';
     reporttag += '<h1 style="font-size:16px;font-weight:bold;margin:0 0 12px 0;">TableMaths '+this.version+'</h1>';
     $('table,td').each(function(idx,el){
       var e=$(el);
@@ -99,15 +99,15 @@ var $tablemaths = {
   tagHtml : function(e){
     this.tm_tag_index++;
     this.tm_cache[this.tm_tag_index]=e;
-    out = $("<p>").append(e.eq(0).clone()).html();
-    parts = out.split('>',2);
+    var out = $("<p>").append(e.eq(0).clone()).html();
+    var parts = out.split('>',2);
     out = parts[0]+'>';
     out = out.replace('<','&lt;').replace('>','&gt;');
     out = '<span class="tmhl-tag" style="cursor:help;" cacheidx="'+this.tm_tag_index+'">'+out+'</span>';
     return out;
   },
   highlightEl : function(e){
-    p=e.offset();
+    var p=e.offset();
     $('#tmhl').css('left',p.left).css('top',p.top).width(e.width()).height(e.height()).show();
   }
 };
