@@ -1,4 +1,21 @@
 repository: traction/TableMaths
 exclude: ['Readme.md','Gemfile*']
 sass:
-    style: compressed
+  style: compressed
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+title: TableMaths by Traction
+description: Sanity check for table-based HTML emails.
+facebook:
+  publisher: https://www.facebook.com/Tractionco/
+twitter:
+  username: Traction
+social:
+  name: Traction
+  links:
+    - https://www.tractionco.com
+    - https://plus.google.com/117650829871636122363
+    - https://twitter.com/Traction
+    - https://www.facebook.com/Tractionco
+    - https://www.linkedin.com/company/traction
