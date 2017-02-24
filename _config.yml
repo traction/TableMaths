@@ -7,8 +7,6 @@ gems:
   - jekyll-seo-tag
 title: TableMaths by Traction
 description: Sanity check for table-based HTML emails.
-facebook:
-  publisher: https://www.facebook.com/Tractionco/
 twitter:
   username: Traction
 social:
