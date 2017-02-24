@@ -1,0 +1,15 @@
+---
+layout: default
+title: TableMaths by Traction | Releases
+---
+<h1><a href="./">TableMaths</a> <small>by <a href="https://tractionco.com">Traction</a></small></h1>
+<h2>Releases</h2>
+<p>Updates are automatic and usually don't require chaning your bookmarklet.</p>
+{% assign releases = site.github.releases | where: "draft","false" | where: "prerelease","false" %}
+{% for release in releases %}
+<div class="release">
+  <h3><a href="{{release.html_url}}">{{release.name}}</a> <small><span class="momentConvert" data-datetime="{{release.published_at | date_to_xmlschema}}">{{release.published_at | date_to_string}}</span> by <a href="{{release.author.url}}">{{release.author.login}}</a></small></h3>
+  <div>{{release.body | markdownify}}</div>
+  <hr>
+</div>
+{% endfor %}

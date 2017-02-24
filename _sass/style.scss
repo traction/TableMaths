@@ -23,10 +23,10 @@ h1 {
   margin: 0 0 3px;
   line-height: 1;
   color: $color-headings;
-  font-size: 3.8em;
+  font-size: 30pt;
 
   small {
-    font-size: .4em;
+    font-size: 0.5em;
   }
 
   a {
@@ -44,7 +44,6 @@ h3,
 h4,
 h5,
 h6 {
-  text-align: center;
   line-height: 1;
   color: $color-headings;
 }
@@ -72,7 +71,6 @@ pre {
 hr {
   border: 0;
   border-bottom: 1px solid $color-hr;
-  width: 80%;
 }
 
 .footer {
