@@ -23,17 +23,17 @@ $highlight-background: #9cf;
   z-index: 99999;
   border: 1px solid $main-color;
   background-color: $main-background;
-  color: $main-color;
   cursor: move;
   padding: 5px;
   width: 450px;
   overflow: hidden;
+  color: $main-color;
   font-family: 'Lucida Grande', Helvetica, Arial;
   font-size: 12px;
   
   h1 {
-    color: $main-color;
     margin: 0 0 12px;
+    color: $main-color;
     font-size: 18px;
     font-weight: bold;
     
