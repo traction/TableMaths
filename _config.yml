@@ -1,2 +1,4 @@
 repository: traction/TableMaths
 exclude: ['Readme.md','Gemfile*']
+sass:
+    style: compressed
