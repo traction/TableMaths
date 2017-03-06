@@ -1,3 +1,4 @@
+// scss-lint:disable IdSelector
 // Used directly in TableMaths display.
 
 #tmhl {
@@ -22,25 +23,25 @@
   color: $main-color;
   font-family: 'Lucida Grande', Helvetica, Arial;
   font-size: 12px;
-  
+
   h1 {
     margin: 0 0 12px;
     color: $main-color;
     font-size: 18px;
     font-weight: bold;
-    
+
     small {
       font-size: 12px;
     }
   }
-  
+
   .tm-report {
     font-weight: bold;
   }
-  
+
   .tm-report-element {
     margin-bottom: 10px;
-    
+
     .tm-report-heading {
       font-weight: bold;
     }

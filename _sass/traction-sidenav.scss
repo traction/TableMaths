@@ -22,6 +22,7 @@ $traction-sidenav-border: #636362;
   .logo-container {
     background-color: $traction-sidenav-bg-01;
     padding: 24px 0 12px 2px;
+
     @media ($meida-small-max) {
       padding: 7px 0 0 10px;
     }
