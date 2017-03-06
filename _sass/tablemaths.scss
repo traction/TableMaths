@@ -24,8 +24,14 @@
   font-family: 'Lucida Grande', Helvetica, Arial;
   font-size: 12px;
 
+  a {
+    text-decoration: underline;
+    color: $main-color;
+  }
+
   h1 {
     margin: 0 0 12px;
+    background-color: transparent;
     color: $main-color;
     font-size: 18px;
     font-weight: bold;
